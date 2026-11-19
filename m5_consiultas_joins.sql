@@ -7,9 +7,10 @@ GO
 -- =====================================
 
 SELECT
-    v.fecha,
+     v.fecha,
     v.id_cliente,
     p.nombre_producto,
+    cat.descripcion AS descripcion_categoria,
     v.cantidad,
     p.precio AS precio_unitario,
     (v.cantidad * p.precio) AS total_calculado
@@ -17,7 +18,9 @@ FROM ventas v
 INNER JOIN clientes c
     ON v.id_cliente = c.id_cliente
 INNER JOIN productos p
-    ON v.id_producto = p.id_producto;
+    ON v.id_producto = p.id_producto
+INNER JOIN categorias cat
+    ON p.id_categoria = cat.id_categoria;
 
 
 -- =====================================
